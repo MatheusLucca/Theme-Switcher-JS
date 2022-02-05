@@ -1,10 +1,34 @@
 let theme = document.getElementById('theme-switch')
+let body = document.querySelector("body")
+
+function load() {
+    let id = localStorage.getItem("id")
+
+    if (id == null) {
+        localStorage.setItem("id", "0")
+        console.log(id)
+    }
+    if (id == 1) {
+        dark();
+        theme.checked = true;
+    }
+}
+
+let dark = () => {
+    body.classList.add("dark")
+    body.classList.remove("light")
+}
+
+let light = () => {
+    body.classList.add("light")
+    body.classList.remove("dark")
+}
 theme.addEventListener("click", (a) => {
     if (theme.checked == true) {
-        document.querySelector("body").classList.add("dark")
-        document.querySelector("body").classList.remove("light")
+        localStorage.setItem("id", "1")
+        dark()
     } else {
-        document.querySelector("body").classList.add("light")
-        document.querySelector("body").classList.remove("dark")
+        light()
+        localStorage.setItem("id", "0")
     }
 })
