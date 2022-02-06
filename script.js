@@ -1,19 +1,5 @@
 let toggle = document.getElementById('theme-switch')
 let body = document.querySelector("body")
-
-function load() {
-    let id = localStorage.getItem("id")
-
-    if (id == null) {
-        localStorage.setItem("id", "0")
-        console.log(id)
-    }
-    if (id == 1) {
-        dark();
-        toggle.checked = true;
-    }
-}
-
 const Theme = {
     dark() {
         body.classList.add("dark")
@@ -24,6 +10,20 @@ const Theme = {
         body.classList.remove("dark")
     }
 }
+function load() {
+    let id = localStorage.getItem("id")
+
+    if (id == null) {
+        localStorage.setItem("id", "0")
+        console.log(id)
+    }
+    if (id == 1) {
+        Theme.dark();
+        toggle.checked = true;
+    }
+}
+
+
 
 toggle.addEventListener("click", (a) => {
     if (toggle.checked == true) {
